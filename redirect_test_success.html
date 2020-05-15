@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Success page.
+
+    Time started: <span id="time-started"></span>
+    Time loaded: <span id="time-loaded"></span>
+    Time set: <span id="time-set"></span>
+    Took: <span id="time-took"></span>
+
+    <script type="application/javascript">
+        let timeStartedEl = document.getElementById('time-started');
+        let timeLoadedEl  = document.getElementById('time-loaded');
+        let timeSetEl     = document.getElementById('time-set');
+        let timeTookEl    = document.getElementById('time-took');
+
+        let timeStarted = window.localStorage.getItem('time-started');
+        let timeSet     = window.localStorage.getItem('time-set');
+        let timeLoaded  = new Date();
+
+        if (timeStarted === null || timeSet === null) {
+            alert('Please load redirect_test.html first.');
+
+            return;
+        }
+
+        timeStarted = new Date(timeStarted);
+
+        let timeTaken = timeLoaded.getTime() - timeStarted.getTime();
+        let timeTakenSecs = Math.round(timeTaken / 1000);
+
+        timeStartedEl.innerHTML = timeStarted.toString();
+        timeLoadedEl.innerHTML  = timeLoaded.toString();
+        timeSetEl.innerHTML     = timeSet;
+        timeTookEl.innerHTML    = `${timeTakenSecs} seconds.`;
+    </script>
+</body>
+</html>

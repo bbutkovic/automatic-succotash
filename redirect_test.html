@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Test</title>
+</head>
+<body>
+    <select id="timer"></select>
+
+    <button id="start">Go redirect</button>
+
+    <span id="redirect-text"></span>
+
+    <script type="application/javascript">
+        let timer        = document.getElementById('timer');
+        let button       = document.getElementById('start');
+        let redirectText = document.getElementById('redirect-text');
+
+
+        for (let i = 0; i < 5; i++) {
+            let time = document.createElement('option')
+            time.value = i * 5;
+            time.innerHTML = `${time.value} seconds`;
+
+            timer.appendChild(time);
+        }
+
+
+        button.onclick = function() {
+            let timeSet = timer.value;
+
+            window.localStorage.setItem('time-started', (new Date()).getTime());
+            window.localStorage.setItem('time-set', timeSet);
+
+            redirectText.innerHTML = `Redirecting you in ${timeSet} seconds...`;
+
+            setTimeout(function() {
+                window.location.replace('/redirect_test_success.html');
+            }, timeSet * 1000);
+        };
+    </script>
+</body>
+</html>
