@@ -23,21 +23,19 @@
         let timeSet     = window.localStorage.getItem('time-set');
         let timeLoaded  = new Date();
 
-        if (timeStarted === null || timeSet === null) {
+        if (timeStarted !== null && timeSet !== null) {
+            timeStarted = new Date(timeStarted);
+
+            let timeTaken = timeLoaded.getTime() - timeStarted.getTime();
+            let timeTakenSecs = Math.round(timeTaken / 1000);
+
+            timeStartedEl.innerHTML = timeStarted.toString();
+            timeLoadedEl.innerHTML  = timeLoaded.toString();
+            timeSetEl.innerHTML     = timeSet;
+            timeTookEl.innerHTML    = `${timeTakenSecs} seconds.`;
+        } else {
             alert('Please load redirect_test.html first.');
-
-            return;
-        }
-
-        timeStarted = new Date(timeStarted);
-
-        let timeTaken = timeLoaded.getTime() - timeStarted.getTime();
-        let timeTakenSecs = Math.round(timeTaken / 1000);
-
-        timeStartedEl.innerHTML = timeStarted.toString();
-        timeLoadedEl.innerHTML  = timeLoaded.toString();
-        timeSetEl.innerHTML     = timeSet;
-        timeTookEl.innerHTML    = `${timeTakenSecs} seconds.`;
+        }        
     </script>
 </body>
 </html>
