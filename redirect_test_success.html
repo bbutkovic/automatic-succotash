@@ -8,9 +8,13 @@
 <body>
     Success page.
 
+    <br>
     Time started: <span id="time-started"></span>
+    <br>
     Time loaded: <span id="time-loaded"></span>
+    <br>
     Time set: <span id="time-set"></span>
+    <br>
     Took: <span id="time-took"></span>
 
     <script type="application/javascript">
@@ -24,7 +28,7 @@
         let timeLoaded  = new Date();
 
         if (timeStarted !== null && timeSet !== null) {
-            timeStarted = new Date(timeStarted);
+            timeStarted = new Date(parseInt(timeStarted));
 
             let timeTaken = timeLoaded.getTime() - timeStarted.getTime();
             let timeTakenSecs = Math.round(timeTaken / 1000);
