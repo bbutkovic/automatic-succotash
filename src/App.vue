@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Coming soon!</h1>
+    <h1 class="greeter">Coming soon!</h1>
   </div>
 </template>
 
@@ -14,12 +14,21 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-smooth: never;
+  -webkit-font-smoothing : none;
+}
+
+.greeter {
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
+  color:#47d6e9;
+}
+
+body {
+  background-color: #141214;
 }
 </style>
